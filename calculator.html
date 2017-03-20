@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Four Function Calculator</title>
+    <style type="text/css">
+        h1
+        {
+            color: black;
+            text-align:center;
+        }        
+        div.box
+        {
+            width: 600px;
+            margin: 0 auto;
+            padding: 25px;
+            background-color: pink;
+            border: 10px solid black;
+            border-style: double;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <div class = "box">
+        <h1>CALCULATOR</h1>
+        <form method="POST">
+            <p>
+                <label for="num1">Enter First Number:</label>
+                <input type="number" step = "any" name="num1" id="num1" />
+            </p>
+            <p>
+                <label for="num2"> Enter Second Number:</label>
+                <input type="number" step = "any" name="num2" id ="num2"/>
+            </p>
+            <p>
+                <label>Enter the Operation:</label> <br>
+                <input type="radio" name = "operation" value = "addition" id = "addition"> Addition <br>
+                <input type="radio" name = "operation" value = "subtraction" id = "subtraction"> Subtraction <br>
+                <input type="radio" name = "operation" value = "multiplication" id = "multiplication"> Multiplication <br>
+                <input type="radio" name = "operation" value = "division" id = "division"> Division <br>
+            </p>
+            <p>
+                <output id="result">Answer</output>
+            </p>
+        </form>
+        <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", calculate, false); 
+            document.getElementById("num1").addEventListener("change", calculate, false);
+            document.getElementById("num2").addEventListener("change", calculate, false);
+            document.getElementById("addition").addEventListener("change", calculate, false);
+            document.getElementById("subtraction").addEventListener("change", calculate, false);
+            document.getElementById("multiplication").addEventListener("change", calculate, false);
+            document.getElementById("division").addEventListener("change", calculate, false);
+
+            function calculate(){
+                var result = " ";
+                var operations = document.getElementsByName("operation");
+                var which_operation = null;
+                for(var i=0; i<operations.length; i++){
+                    if(operations[i].checked){
+                        which_operation = operations[i].value;  
+                        break;            
+                    }
+                }
+
+                var num1 = parseFloat(document.getElementById("num1").value); 
+                
+                var num2 = parseFloat(document.getElementById("num2").value);
+                
+                if(which_operation == "addition")
+                {
+                    result = num1 + num2;
+                }
+                else if(which_operation == "subtraction")
+                {
+                    result = num1 - num2;
+                }
+                else if(which_operation == "multiplication")
+                {
+                    result = num1 * num2;
+                }
+                else if(which_operation == "division")
+                {
+                    if(num2 === 0)
+                    {
+                        result = "Division by 0";
+                    }
+                    else
+                    {
+                        result = num1 / num2; 
+                    }
+                }
+                document.getElementById("result").textContent = "Result: "+result;  
+
+                
+            }
+            
+        </script>
+
+    </div>
+
+</body>
+</html>
