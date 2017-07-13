@@ -1,3 +1,1 @@
-Link to calculator: http://ec2-54-88-33-139.compute-1.amazonaws.com/~punsach/calculator.html
-
-Link to weather widget: http://ec2-54-88-33-139.compute-1.amazonaws.com/~punsach/weather
+Contains a Weather Widget which creates a forecast of weather data from a random city, and a Calculator which will update anytime the user changes one of the input fields. 
